@@ -1,6 +1,6 @@
 # json-git-redux [![Build Status](https://travis-ci.org/RobinBressan/json-git-redux.svg?branch=master)](https://travis-ci.org/RobinBressan/json-git-redux)
 
-Official Redux bindings for [json-git](https://github.com/RobinBressan/json-git).
+Official [json-git](https://github.com/RobinBressan/json-git) bindings for Redux.
 
 ## Installation
 
