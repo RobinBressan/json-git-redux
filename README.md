@@ -123,6 +123,8 @@ Note that **you must subscribe your component to the head of your repository** i
 * `getJSON(repositoryName)` exports a snapshot of a repository
 * `getLog(repositoryName)` returns the full history of a repository
 * `getTree(repositoryName)` returns the current tree of a repository
+* `subscribe(repositoryName, subscriber)` subscribe a subscriber to a repository
+* `unsubscribe(repositoryName, subscriber)` unsubscribe a subscriber from a repository
 
 To use them, just import them from `json-git-redux`:
 

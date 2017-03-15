@@ -33,3 +33,15 @@ export function getJSON(registry, repositoryName) {
 
     return registry.get(repositoryName).toJSON();
 }
+
+export function subscribe(registry, repositoryName, subscriber) {
+    ensureRepository(registry, repositoryName);
+
+    return registry.get(repositoryName).subscribe(subscriber);
+}
+
+export function unsubscribe(registry, repositoryName, subscriber) {
+    ensureRepository(registry, repositoryName);
+
+    return registry.get(repositoryName).unsubscribe(subscriber);
+}

@@ -12,6 +12,8 @@ export const getDiff = createSelector(selectors.getDiff);
 export const getLog = createSelector(selectors.getLog);
 export const getTree = createSelector(selectors.getTree);
 export const getJSON = createSelector(selectors.getJSON);
+export const subscribe = createSelector(selectors.subscribe);
+export const unsubscribe = createSelector(selectors.unsubscribe);
 
 export function createReducer(repositories) {
     Object

@@ -5,6 +5,8 @@ import {
     getLog,
     getTree,
     getJSON,
+    subscribe,
+    unsubscribe,
 } from './selectors';
 
 describe('Selectors', () => {
@@ -21,7 +23,9 @@ describe('Selectors', () => {
             },
             diff: expect.createSpy().andReturn('i am a diff'),
             apply: expect.createSpy().andReturn('i am a tree'),
+            subscribe: expect.createSpy().andReturn('subscribed'),
             toJSON: expect.createSpy().andReturn('i am a json'),
+            unsubscribe: expect.createSpy().andReturn('unsubscribed'),
         };
 
         registry = {
@@ -90,5 +94,29 @@ describe('Selectors', () => {
     it("should throw an error is the repository doesn't exist when getJSON is called", () => {
         registry.has.andReturn(false);
         expect(() => getJSON(registry, 'test')).toThrow(/Repository test not found/);
+    });
+
+    it('should call repository.subscribe() on a repository when subscribe() is called and return the result', () => {
+        expect(subscribe(registry, 'test', 'subscriber')).toBe('subscribed');
+        expect(registry.has).toHaveBeenCalledWith('test');
+        expect(registry.get).toHaveBeenCalledWith('test');
+        expect(repository.subscribe).toHaveBeenCalledWith('subscriber');
+    });
+
+    it("should throw an error is the repository doesn't exist when subscribe is called", () => {
+        registry.has.andReturn(false);
+        expect(() => subscribe(registry, 'test')).toThrow(/Repository test not found/);
+    });
+
+    it('should call repository.unsubscribe() on a repository when unsubscribe() is called and return the result', () => {
+        expect(unsubscribe(registry, 'test', 'subscriber')).toBe('unsubscribed');
+        expect(registry.has).toHaveBeenCalledWith('test');
+        expect(registry.get).toHaveBeenCalledWith('test');
+        expect(repository.unsubscribe).toHaveBeenCalledWith('subscriber');
+    });
+
+    it("should throw an error is the repository doesn't exist when unsubscribe is called", () => {
+        registry.has.andReturn(false);
+        expect(() => unsubscribe(registry, 'test')).toThrow(/Repository test not found/);
     });
 });

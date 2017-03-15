@@ -1,6 +1,6 @@
 {
   "name": "json-git-redux",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Official json-git bindings for Redux",
   "main": "./lib/index.js",
   "scripts": {
@@ -35,7 +35,7 @@
     "mocha": "3.2.0"
   },
   "peerDependencies": {
-    "json-git": "~0.1.0",
+    "json-git": "~0.2.0",
     "redux": "~3.6.0"
   }
 }
